@@ -2,6 +2,8 @@ package com.topcall.runbox.web;
 
 import com.topcall.runbox.domain.Project;
 import com.topcall.runbox.service.ProjectService;
+import com.topcall.runbox.domain.ProjectUser;
+import com.topcall.runbox.service.ProjectUserService;
 import com.topcall.runbox.util.Rescode;
 import com.topcall.runbox.util.Result;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +17,9 @@ import java.util.List;
 public class ProjectController {
     @Autowired
     private ProjectService projectService;
+
+    @Autowired
+    private ProjectUserService projectUserService;
 
     @RequestMapping(value="/create", method=RequestMethod.POST)
     public Result send(@RequestBody Project item1 ) {
@@ -60,5 +65,25 @@ public class ProjectController {
         }
         List<Project> items = projectService.selectMulti(ret);
         return new Result(0, items);
+    }
+
+    @RequestMapping(value="/user/add", method=RequestMethod.POST)
+    public Result addUser(@RequestBody ProjectUser item1 ) {
+        if( item1.getProject() == 0 || item1.getUid() == 0 ) {
+            return new Result(Rescode.INVALID_PARAMETER, null);
+        }
+
+        ProjectUser item = projectUserService.insert(item1);
+        return new Result(0, item);
+    }
+
+    @RequestMapping(value="/user/remove", method=RequestMethod.POST)
+    public Result removeUser(@RequestBody ProjectUser item1 ) {
+        if( item1.getProject() == 0 || item1.getUid() == 0 ) {
+            return new Result(Rescode.INVALID_PARAMETER, null);
+        }
+
+        projectUserService.remove(item1);
+        return new Result(0, item1);
     }
 }

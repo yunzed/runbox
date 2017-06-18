@@ -2,3 +2,4 @@ runbox/.mvn
 runbox-db/.mvn
 runbox/.idea/
 runbox/runbox-common/target/
+*.iml
