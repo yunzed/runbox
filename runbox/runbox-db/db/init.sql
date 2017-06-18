@@ -39,3 +39,14 @@ CREATE TABLE `milestone` (
   `uts` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10000000 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `project_user` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'project user id',
+  `uid` bigint(20),
+  `project` bigint(20),
+  `cts` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10000000 DEFAULT CHARSET=utf8;
+
+
+
