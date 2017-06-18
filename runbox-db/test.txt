@@ -1,8 +1,8 @@
 #task relative
 
-curl http://localhost:8080/ultron/api/v1/test
-curl http://localhost:8080/ultron/api/v1/project/1
-curl http://localhost:8080/ultron/api/v1/project/batch/1,2
+curl http://localhost:8080/runbox/api/v1/test
+curl http://localhost:8080/runbox/api/v1/project/1
+curl http://localhost:8080/runbox/api/v1/project/batch/1,2
 
-curl -l -H "Content-type: application/json" -X POST -d '{"owner":10001, "name":"project1", "desc":"hello world!"}' http://localhost:8080/ultron/api/v1/project/create
+curl -l -H "Content-type: application/json" -X POST -d '{"owner":10001, "name":"project1", "desc":"hello world!"}' http://localhost:8080/runbox/api/v1/project/create
 
